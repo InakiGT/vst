@@ -24,5 +24,5 @@ export async function POST(req: NextRequest) {
 
   await writeFile(filepath, buffer)
 
-  return NextResponse.json({ message: 'Archivo subido exitosamente', path: `/uploads/${filename}` })
+  return NextResponse.json({ message: 'Archivo subido exitosamente', path: `/vst/uploads/${filename}` })
 }

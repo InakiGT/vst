@@ -20,4 +20,5 @@ export const authConfig = {
   },
   basePath: '/vst/api/auth',
   providers: [],
+  trustHost: true,
 } satisfies NextAuthConfig

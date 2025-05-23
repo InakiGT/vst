@@ -19,7 +19,7 @@ async function getUser(email: string): Promise<User | undefined> {
     }
 }
 
-export const { auth, signIn, signOut } = NextAuth({
+export const { auth, signIn, signOut, handlers } = NextAuth({
   ...authConfig,
   providers: [Credentials({
     async authorize(credentials) {
@@ -39,4 +39,5 @@ export const { auth, signIn, signOut } = NextAuth({
         return null
     }
   })],
+  basePath: "/vst/api/auth",
 })

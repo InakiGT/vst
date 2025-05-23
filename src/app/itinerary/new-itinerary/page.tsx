@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import Backward from '@/app/components/Backward'
 import NeedKardexPhoto from '@/app/components/NeedKardexPhoto'
 import NewItineraryForm from '@/app/components/NewItineraryForm'

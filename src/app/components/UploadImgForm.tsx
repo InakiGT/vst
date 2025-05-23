@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { addKardexImgToUser } from '@/app/lib/actions'
 
 export default function UploadImgForm({ kardexImg }: { kardexImg:  string | undefined }) {
@@ -25,9 +25,6 @@ export default function UploadImgForm({ kardexImg }: { kardexImg:  string | unde
     await addKardexImgToUser(undefined, data.path)
   }
 
-  useEffect(() => {
-
-  }, [ kardexImg ])
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col">

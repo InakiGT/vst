@@ -4,9 +4,18 @@ const nextConfig: NextConfig = {
   basePath: '/vst',
   assetPrefix: '/vst',
   images: {
-    loader: 'default',
-    path: '/vst/_next/image',
+    remotePatterns: [
+      {
+        protocol: 'http',
+        hostname: '148.206.168.178',
+        port: '',
+        pathname: '/vst/uploads/**',
+      },
+    ],
+    unoptimized: false,
   },
+  trailingSlash: true,
 };
+
 
 export default nextConfig;

@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import Backward from '@/app/components/Backward'
 import { fetchUserByEmail } from '@/app/lib/data'
 import { auth } from '@/auth'

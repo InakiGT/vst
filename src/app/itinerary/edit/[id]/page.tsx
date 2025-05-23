@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import Backward from '@/app/components/Backward'
 import UpdateItineraryForm from '@/app/components/UpdateItineraryForm'
 import { fetchEnrolledUsersByItineraryId, fetchItineraryById } from '@/app/lib/data'

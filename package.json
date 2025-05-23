@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
-    "start": "next start",
+    "start": "PORT=2453 next start",
     "lint": "next lint",
     "seed": "node -r dotenv/config src/seed/route.ts"
   },

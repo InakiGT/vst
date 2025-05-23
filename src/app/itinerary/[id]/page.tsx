@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import Backward from '@/app/components/Backward'
 import EnrollButtons from '@/app/components/EnrollButtons'
 import Map from '@/app/components/Map'

@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import { fetchItinerariesByUser } from '@/app/lib/data'
 import { reverseGeocode } from '@/app/lib/utils'
 import { ItineraryFromDb } from '@/app/lib/definitions'

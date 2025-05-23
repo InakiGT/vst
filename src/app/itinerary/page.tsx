@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import Link from 'next/link'
 import Itineraries from '@/app/components/Itineraries'
 import { fetchIntineraries } from '@/app/lib/data'
@@ -10,6 +12,7 @@ export type ItineraryWithLocation = ItineraryFromDb & {
 
 export default async function Page() {
   const itineraries = await fetchIntineraries()
+
   const itinerariesWithLocation = await Promise.all(
     itineraries.map(async (itinerary) => ({
       ...itinerary,

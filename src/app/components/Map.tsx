@@ -4,7 +4,7 @@ import { useEffect, useRef } from 'react'
 import mapboxgl from 'mapbox-gl'
 import { type Coords } from '../lib/definitions'
 
-mapboxgl.accessToken = process.env.PUBLIC_MAPBOX_TOKEN! || 'pk.eyJ1IjoiaW5ha2lraXJpa2kiLCJhIjoiY21hdnhjOXhxMDl5YTJscHU2NDBndWU5MCJ9.yk-YV4n6uMZs21HXFJLqew'
+mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN! || ''
 
 export default function Map({ start }: { start: Coords }) {
   const mapContainer = useRef<HTMLDivElement>(null)

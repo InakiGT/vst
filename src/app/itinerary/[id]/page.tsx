@@ -14,8 +14,8 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
   const { id } = await props.params
   const itinerary = await fetchItineraryById(id)
   const coords = {
-    lat: itinerary?.location.y ?? 0,
-    lng: itinerary?.location.x ?? 0,
+    lat: itinerary?.location.y ?? 19.3517598,
+    lng: itinerary?.location.x ?? -99.2826866,
   }
 
   if ( !itinerary ) {

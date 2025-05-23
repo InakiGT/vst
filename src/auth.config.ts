@@ -13,7 +13,7 @@ export const authConfig = {
         if (isLoggedIn) return true
         return false
       } else if (isLoggedIn) {
-        return Response.redirect(new URL('/itinerary', nextUrl));
+        return Response.redirect(new URL('/vst/itinerary', nextUrl));
       }
       return true
     },

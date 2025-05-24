@@ -39,5 +39,5 @@ export const { auth, signIn, signOut, handlers } = NextAuth({
         return null
     }
   })],
-  basePath: "/vst/api/auth",
+  basePath: "/vst",
 })

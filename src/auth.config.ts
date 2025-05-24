@@ -18,7 +18,7 @@ export const authConfig = {
       return true
     },
   },
-  basePath: '/vst',
+  basePath: '',
   providers: [],
   trustHost: true,
 } satisfies NextAuthConfig

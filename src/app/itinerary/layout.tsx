@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
-import Logout from '../components/Logout'
+import Logout from '@/app/components/Logout'
 
 export default function ItineraryLayout({
   children,

@@ -5,7 +5,7 @@ import { redirect } from 'next/navigation'
 import { z } from 'zod'
 import bcrypt from 'bcrypt'
 import { AuthError } from 'next-auth'
-import { auth, signIn } from '@/auth'
+import { auth, signIn, signOut } from '@/auth'
 import { revalidatePath } from 'next/cache'
 import { fetchUserByEmail } from './data'
 
@@ -314,6 +314,7 @@ export async function unenrollFromItinerary(prevState: string | undefined, itine
 
 export async function authenticate(prevState: string | undefined, formData: FormData) {
   try {
+    formData.append('callbackUrl', '/vst/itinerary')
     await signIn('credentials', formData)
   } catch ( error ) {
     if (error instanceof AuthError) {
@@ -326,6 +327,10 @@ export async function authenticate(prevState: string | undefined, formData: Form
     }
     throw error
   }
+}
+
+export async function logout() {
+  await signOut()
 }
 
 export async function rateUser(userEmail: string, rating: string | number, itineraryId: string) {

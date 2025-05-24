@@ -1,16 +1,13 @@
 'use client'
 
-import { signOut } from 'next-auth/react'
+import { logout } from '@/app/lib/actions'
 
 export default function Logout() {
   return (
-    <button
-      onClick={async () => {
-        await signOut({ callbackUrl: '/vst/login' })
-      }}
-      className="w-full text-left cursor-pointer"
-    >
-      Salir
-    </button>
+    <form action={logout}>
+      <button type="submit" className="w-full text-left cursor-pointer">
+        Cerrar sesión
+      </button>
+    </form>
   )
 }

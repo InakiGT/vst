@@ -6,7 +6,7 @@ export default function Logout() {
   return (
     <button
       onClick={async () => {
-        await signOut({ callbackUrl: '/login' })
+        await signOut({ callbackUrl: '/vst/login' })
       }}
       className="w-full text-left cursor-pointer"
     >

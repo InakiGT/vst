@@ -104,11 +104,25 @@ export async function createUser(prevState: UserState, formData: FormData) {
       [name, lastname, email, encryptedPassword]
     )
 
+    await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/send-email`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        to: email,
+        subject: 'Alta en VST',
+        text: `Te has dado de alta en VST, ahora puedes crear un itinerario o inscribirte a uno, pero no olvides antes subir una foto de tu kardex para validar tu identidad`
+      })
+    })
+
+    redirect('/login')
   } catch ( err ) {
     console.error(err)
+    return {
+      errors: {},
+      message: 'El usuario ya se encuentra inscrito, prueba iniciar sesión'
+    }
   }
 
-  redirect('/login')
 }
 
 export async function updateUser(prevState: UserState, formData: FormData) {
@@ -210,6 +224,16 @@ export async function createItinerary(prevState: ItineraryState | undefined, for
         VALUES (?, ?, ST_GeomFromText(?, 4326), ?, ?, ?, ?, ?)`,
       [ plate, color, `POINT(${lat} ${lng})`, direction, days, hour + ':00', capacity, email ]
     )
+
+    await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/send-email`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        to: session?.user?.email,
+        subject: 'Creación de itinerario en VST',
+        text: `Has creado un itinerario en VST`
+      })
+    })
 
   } catch ( err ) {
     console.error(err)

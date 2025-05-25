@@ -15,7 +15,11 @@ export default function Page() {
       <form action={ formAction } className="flex flex-col text-new-white bg-main-black items-center py-10 px-15 rounded-sm w-180 shadow-lg shadow-black/70">
         <div className="text-center mb-8">
           <h1 className={`${ rubikglitch.className } text-5xl`}>VST</h1>
-          <h2 className="text-2xl font-light">Registro</h2>
+          <h2 className="text-2xl font-light mb-1">Registro</h2>
+          {
+            state.message &&
+            <span className='bg-red-400 py-1 px-5 text-center font-bold rounded-sm'>{ state.message }</span>
+          }
         </div>
         <div className="flex flex-col w-full gap-5">
           <div className="flex flex-col gap-2">

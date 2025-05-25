@@ -28,7 +28,7 @@ export default function UploadImgForm({ kardexImg }: { kardexImg:  string | unde
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col">
-      <h3 className="text-xl font-bold">Sube la imagen de tu kardex</h3>
+      <h3 className="text-xl font-bold">Sube la imagen de tu kardex <span className='text-sm font-light'>(El archivo no debe contener especios ni caracteres especiales)</span></h3>
       <span className='font-light mb-4'>La imagen es necesaria para validar tu identidad</span>
       <input
         type="file"

@@ -1,9 +1,7 @@
 @import "tailwindcss";
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground: #f5f5f5;
-  }
+:root {
+  --foreground: #f5f5f5;
 }
 
 @theme {

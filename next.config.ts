@@ -14,7 +14,6 @@ const nextConfig: NextConfig = {
     ],
     unoptimized: false,
   },
-  trailingSlash: true,
 };
 
 

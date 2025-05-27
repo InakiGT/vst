@@ -12,7 +12,6 @@ const nextConfig: NextConfig = {
         pathname: '/vst/uploads/**',
       },
     ],
-    unoptimized: false,
   },
 };
 

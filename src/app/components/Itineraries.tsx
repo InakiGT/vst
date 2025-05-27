@@ -12,7 +12,7 @@ export default async function Itineraries({ itineraries }: { itineraries: Itiner
         itineraries.map(
           itinerary => {
             const { id, direction, hour, capacity, days, status, location_name } = itinerary
-
+            console.log({itinerary})
             return (
               <ul key={ id } className="grid grid-cols-7 gap-4 items-center py-3 px-5 text-xl border-b-borders border-b-2">
                 <li className='uppercase'>{ direction }</li>
@@ -29,7 +29,7 @@ export default async function Itineraries({ itineraries }: { itineraries: Itiner
                 <li className={`${  status === 'a' ? 'text-green-600': 'text-red-400'}`}>{  status === 'a' ? 'Activo' : 'Suspendido'  }</li>
                 <li>
 
-                  <Link href={`/itinerary/${ session?.user?.email !== itinerary.email ? '' : '/edit/' }${  id }`} className="font-bold bg-main-blue rounded-sm py-1 px-8 cursor-pointer">Ver</Link>
+                  <Link href={`/itinerary/${ session?.user?.email !== itinerary.user_email ? '' : '/edit/' }${  id }`} className="font-bold bg-main-blue rounded-sm py-1 px-8 cursor-pointer">Ver</Link>
                 </li>
               </ul>
         )})

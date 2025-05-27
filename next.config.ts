@@ -8,7 +8,6 @@ const nextConfig: NextConfig = {
       {
         protocol: 'http',
         hostname: '148.206.168.178',
-        port: '',
         pathname: '/vst/uploads/**',
       },
     ],

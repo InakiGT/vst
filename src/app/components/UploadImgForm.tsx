@@ -22,7 +22,7 @@ export default function UploadImgForm({ kardexImg }: { kardexImg:  string | unde
 
     const data = await res.json()
     setMessage(data.message)
-    await addKardexImgToUser(undefined, data.path)
+    await addKardexImgToUser(undefined, `http://148.206.168.178${data.path}`)
   }
 
 

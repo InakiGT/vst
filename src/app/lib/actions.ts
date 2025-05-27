@@ -1,6 +1,5 @@
 'use server'
 
-import mysql from 'mysql2/promise'
 import { redirect } from 'next/navigation'
 import { z } from 'zod'
 import bcrypt from 'bcrypt'
@@ -8,8 +7,7 @@ import { AuthError } from 'next-auth'
 import { auth, signIn, signOut } from '@/auth'
 import { revalidatePath } from 'next/cache'
 import { fetchUserByEmail } from './data'
-
-const sql = await mysql.createConnection(process.env.MYSQL_URI || '')
+import { sql } from './dbPool'
 
 const CreateUserSchema = z.object({
   id: z.number(),

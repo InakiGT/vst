@@ -1,14 +1,14 @@
-import mysql, { RowDataPacket } from 'mysql2/promise'
+import { RowDataPacket } from 'mysql2/promise'
 import type { EnrolledUser, UserEnrolled, ItineraryFromDb } from './definitions'
 import { auth } from '@/auth'
 import { type User } from '@/app/lib/definitions'
 import { MyItinerary } from '@/app/itinerary/my/page'
-
-const sql = await mysql.createConnection(process.env.MYSQL_URI || '')
+import { sql } from './dbPool'
 
 export async function fetchIntineraries(): Promise<ItineraryFromDb[]> {
   try {
     const [ rows ] = await sql.execute<(ItineraryFromDb & RowDataPacket)[]>('SELECT * FROM itineraries;')
+
     return rows
   } catch (err) {
     console.error(err)

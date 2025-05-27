@@ -4,9 +4,9 @@ import Credentials from 'next-auth/providers/credentials'
 import { z } from 'zod'
 import type { User } from '@/app/lib/definitions'
 import bcrypt from 'bcrypt'
-import mysql, { RowDataPacket } from 'mysql2/promise'
+import { RowDataPacket } from 'mysql2/promise'
+import { sql } from './app/lib/dbPool'
 
-const sql = await mysql.createConnection(process.env.MYSQL_URI || '')
 
 async function getUser(email: string): Promise<User | undefined> {
     try {

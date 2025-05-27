@@ -5,7 +5,6 @@ import { auth } from '@/auth'
 
 export default async function Itineraries({ itineraries }: { itineraries: ItineraryWithLocation[] }) {
   const session = await auth()
-
   return (
     <>
       {
@@ -30,7 +29,7 @@ export default async function Itineraries({ itineraries }: { itineraries: Itiner
                 <li className={`${  status === 'a' ? 'text-green-600': 'text-red-400'}`}>{  status === 'a' ? 'Activo' : 'Suspendido'  }</li>
                 <li>
 
-                  <Link href={`/itinerary/${ session?.user?.email === itinerary.email ? '' : '/edit/' }${  id }`} className="font-bold bg-main-blue rounded-sm py-1 px-8 cursor-pointer">Ver</Link>
+                  <Link href={`/itinerary/${ session?.user?.email !== itinerary.email ? '' : '/edit/' }${  id }`} className="font-bold bg-main-blue rounded-sm py-1 px-8 cursor-pointer">Ver</Link>
                 </li>
               </ul>
         )})

@@ -35,12 +35,12 @@ function LoginForm() {
             <input autoComplete="current-password" className="text-xl p-3 bg-soft-black rounded-sm border-b-borders border-b-2" id="password" name="password" type="password" placeholder="Contraseña" />
           </div>
         </div>
-
+        <Link href='/recovery' className='text-left underline text-soft-white w-full'>¿Olvidaste tu contraseña?</Link>
         <div className="flex flex-col text-center pt-10 text-xl items-center gap-3 mt-10">
           <input type="hidden" name='redirectTo' value={ callbackUrl } />
           <button aria-disabled={ isPending } className="cursor-pointer bg-main-blue font-bold text-3xl rounded-sm py-2 w-60">Iniciar Sesión</button>
           <span className="font-bold">o</span>
-          <Link className="text-soft-white mb-6" href={ '/register' }>¿No tienes una cuenta? <span className="underline">Registrate</span></Link>
+          <Link className="text-soft-white mb-6" href='/register'>¿No tienes una cuenta? <span className="underline">Registrate</span></Link>
         </div>
       </form>
     </CredentialsFormContainer>

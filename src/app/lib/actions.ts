@@ -1,13 +1,14 @@
 'use server'
 
 import { redirect } from 'next/navigation'
+import jwt from 'jsonwebtoken'
 import { z } from 'zod'
 import bcrypt from 'bcrypt'
-import { AuthError } from 'next-auth'
+import { AuthError, User } from 'next-auth'
 import { auth, signIn, signOut } from '@/auth'
 import { revalidatePath } from 'next/cache'
-import { fetchUserByEmail } from './data'
-import { sql } from './dbPool'
+import { fetchUserByEmail } from '@/app/lib/data'
+import { sql } from '@/app/lib/dbPool'
 
 const CreateUserSchema = z.object({
   id: z.number(),
@@ -415,4 +416,49 @@ export async function rejectEnrolled(itineraryId: string, userEmail: string) {
   } catch (err) {
     console.error(err)
   }
+}
+
+export async function generateRecoveryToken(prevState: string | undefined, formData: FormData) {
+  const email = formData.get('email') as string
+  try {
+  const user = await sql.execute('SELECT * FROM users WHERE email = ?', [email])
+  const userData = user[0] as User[]
+  if ( !userData[0]) {
+    return 'No existe un usuario con ese correo'
+  }
+
+  const token = jwt.sign({ sub: email }, process.env.JWT_SECRET as jwt.Secret, { expiresIn: '15m' })
+
+  redirect(`/change-password?token=${ token }`)
+  } catch ( error ) {
+    if (error instanceof AuthError) {
+      switch (error.type) {
+        case 'CredentialsSignin':
+          return 'Credenciales invalidas.'
+        default:
+          return 'Algo salió mal.'
+      }
+    }
+    throw error
+  }
+}
+
+export async function recoveryPassword(prevState: string | undefined, formData: FormData) {
+  const password = formData.get('password') as string
+  const repeatPassword = formData.get('repeat-password') as string
+  const token = formData.get('token') as string
+  const email = token ? (jwt.decode(token) as { sub: string }).sub : null
+
+  if (password !== repeatPassword) {
+    return 'Las contraseñas no coinciden.'
+  }
+
+  try {
+    const encryptedPassword = await bcrypt.hash(password, 10)
+    await sql.execute('UPDATE users SET password = ? WHERE email = ?', [encryptedPassword, email])
+  } catch (error) {
+    console.log(error)
+    return 'Error al recuperar la contraseña.'
+  }
+  redirect('/login')
 }
